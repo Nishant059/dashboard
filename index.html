@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            600: '#4f46e5',
+                            700: '#4338ca',
+                            800: '#3730a3',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gray-50 font-sans antialiased">
+    <!-- Dashboard Container -->
+    <div class="min-h-screen flex flex-col md:flex-row">
+        <!-- Mobile Sidebar Toggle -->
+        <button id="sidebarToggle" class="md:hidden fixed top-4 left-4 z-50 p-2 rounded-md bg-primary-600 text-white">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <!-- Sidebar -->
+        <aside id="sidebar" class="w-64 bg-primary-800 text-white fixed md:relative h-screen transform -translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out z-40">
+            <div class="p-4 flex items-center justify-between border-b border-primary-700">
+                <h1 class="text-xl font-bold">AdminPro</h1>
+                <button id="sidebarClose" class="md:hidden p-1 rounded-full hover:bg-primary-700">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <nav class="p-4">
+                <div class="mb-8">
+                    <p class="text-xs uppercase text-primary-300 mb-4">Main</p>
+                    <ul class="space-y-2">
+                        <li>
+                            <a href="#" class="flex items-center p-2 rounded-lg bg-primary-700">
+                                <i class="fas fa-tachometer-alt mr-3"></i>
+                                Dashboard
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center p-2 rounded-lg hover:bg-primary-700">
+                                <i class="fas fa-users mr-3"></i>
+                                Users
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center p-2 rounded-lg hover:bg-primary-700">
+                                <i class="fas fa-boxes mr-3"></i>
+                                Products
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <p class="text-xs uppercase text-primary-300 mb-4">Settings</p>
+                    <ul class="space-y-2">
+                        <li>
+                            <a href="#" class="flex items-center p-2 rounded-lg hover:bg-primary-700">
+                                <i class="fas fa-cog mr-3"></i>
+                                Settings
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            
+            <div class="absolute bottom-0 left-0 right-0 p-4 border-t border-primary-700">
+                <div class="flex items-center">
+                    <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="User" class="w-10 h-10 rounded-full">
+                    <div class="ml-3">
+                        <p class="text-sm font-medium">Nishant K</p>
+                        <p class="text-xs text-primary-300">Admin</p>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 md:ml-64 transition-all duration-300">
+            <!-- Header -->
+            <header class="bg-white shadow-sm p-4 flex justify-between items-center">
+                <h2 class="text-xl font-semibold text-gray-800">Dashboard Overview</h2>
+                <div class="flex items-center space-x-4">
+                    <button class="p-2 rounded-full hover:bg-gray-100">
+                        <i class="fas fa-bell text-gray-600"></i>
+                    </button>
+                    <div class="relative">
+                        <button class="flex items-center space-x-2">
+                            <span class="text-sm font-medium">Nishant K</span>
+                            <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="User" class="w-8 h-8 rounded-full">
+                        </button>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard Content -->
+            <div class="p-6">
+                <!-- Stats Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <div class="flex justify-between">
+                            <div>
+                                <p class="text-sm text-gray-500">Total Revenue</p>
+                                <h3 class="text-2xl font-bold">$24,780</h3>
+                                <p class="text-sm text-green-500 mt-1">
+                                    <i class="fas fa-arrow-up mr-1"></i> 12.5% from last month
+                                </p>
+                            </div>
+                            <div class="bg-blue-100 text-blue-600 p-3 rounded-full h-12 w-12 flex items-center justify-center">
+                                <i class="fas fa-dollar-sign"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <div class="flex justify-between">
+                            <div>
+                                <p class="text-sm text-gray-500">Total Users</p>
+                                <h3 class="text-2xl font-bold">1,842</h3>
+                                <p class="text-sm text-green-500 mt-1">
+                                    <i class="fas fa-arrow-up mr-1"></i> 8.2% from last month
+                                </p>
+                            </div>
+                            <div class="bg-green-100 text-green-600 p-3 rounded-full h-12 w-12 flex items-center justify-center">
+                                <i class="fas fa-users"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <div class="flex justify-between">
+                            <div>
+                                <p class="text-sm text-gray-500">Active Products</p>
+                                <h3 class="text-2xl font-bold">356</h3>
+                                <p class="text-sm text-red-500 mt-1">
+                                    <i class="fas fa-arrow-down mr-1"></i> 3.4% from last month
+                                </p>
+                            </div>
+                            <div class="bg-purple-100 text-purple-600 p-3 rounded-full h-12 w-12 flex items-center justify-center">
+                                <i class="fas fa-box-open"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <div class="flex justify-between">
+                            <div>
+                                <p class="text-sm text-gray-500">Conversion Rate</p>
+                                <h3 class="text-2xl font-bold">3.6%</h3>
+                                <p class="text-sm text-green-500 mt-1">
+                                    <i class="fas fa-arrow-up mr-1"></i> 1.1% from last month
+                                </p>
+                            </div>
+                            <div class="bg-yellow-100 text-yellow-600 p-3 rounded-full h-12 w-12 flex items-center justify-center">
+                                <i class="fas fa-percentage"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Charts Section -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+                    <!-- Main Chart -->
+                    <div class="bg-white rounded-lg shadow p-6 lg:col-span-2">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="font-semibold text-lg">Revenue Overview</h3>
+                            <div class="flex space-x-2">
+                                <button class="px-3 py-1 text-sm rounded-md bg-primary-100 text-primary-700">Monthly</button>
+                                <button class="px-3 py-1 text-sm rounded-md hover:bg-gray-100">Yearly</button>
+                            </div>
+                        </div>
+                        <div class="h-64 bg-gray-50 rounded flex items-center justify-center">
+                            <p class="text-gray-400">Chart will appear here</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Recent Activities -->
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <h3 class="font-semibold text-lg mb-4">Recent Activities</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <div class="bg-blue-100 text-blue-600 p-2 rounded-full mr-3">
+                                    <i class="fas fa-user-plus"></i>
+                                </div>
+                                <div>
+                                    <p class="font-medium">New user registered</p>
+                                    <p class="text-sm text-gray-500">2 minutes ago</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-green-100 text-green-600 p-2 rounded-full mr-3">
+                                    <i class="fas fa-shopping-cart"></i>
+                                </div>
+                                <div>
+                                    <p class="font-medium">New order received</p>
+                                    <p class="text-sm text-gray-500">1 hour ago</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-purple-100 text-purple-600 p-2 rounded-full mr-3">
+                                    <i class="fas fa-truck"></i>
+                                </div>
+                                <div>
+                                    <p class="font-medium">Order shipped</p>
+                                    <p class="text-sm text-gray-500">3 hours ago</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Orders Table -->
+                <div class="bg-white rounded-lg shadow overflow-hidden">
+                    <div class="p-6 border-b border-gray-200">
+                        <h3 class="font-semibold text-lg">Recent Orders</h3>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full divide-y divide-gray-200">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Order ID</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Customer</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Amount</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-white divide-y divide-gray-200">
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">#ORD-0001</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">John Smith</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Delivered</span>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">$245.00</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">2023-06-15</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">#ORD-0002</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Sarah Johnson</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">Processing</span>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">$189.00</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">2023-06-14</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Toggle mobile sidebar
+        const sidebarToggle = document.getElementById('sidebarToggle');
+        const sidebarClose = document.getElementById('sidebarClose');
+        const sidebar = document.getElementById('sidebar');
+        
+        sidebarToggle.addEventListener('click', () => {
+            sidebar.classList.remove('-translate-x-full');
+        });
+        
+        sidebarClose.addEventListener('click', () => {
+            sidebar.classList.add('-translate-x-full');
+        });
+        
+        // Close sidebar when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!sidebar.contains(e.target) && e.target !== sidebarToggle) {
+                sidebar.classList.add('-translate-x-full');
+            }
+        });
+    </script>
+</body>
+</html>
